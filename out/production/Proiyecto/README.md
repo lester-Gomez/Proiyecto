@@ -1,2 +1,0 @@
-# Proiyecto
-ePractica
