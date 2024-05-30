@@ -1,0 +1,381 @@
+Index: Coneccion/FormularioInscripcion.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Coneccion/FormularioInscripcion.java b/Coneccion/FormularioInscripcion.java
+--- a/Coneccion/FormularioInscripcion.java	(revision 6207e7ad475709a7659ead92701aaab6ff7fe7aa)
++++ b/Coneccion/FormularioInscripcion.java	(date 1717090200430)
+@@ -1,0 +1,28 @@
++package Coneccion;
++import javax.swing.*;
++import java.awt.*;
++
++public class FormularioInscripcion {
++
++    public static void mostrarFormulario() {
++        JTextField idAlumnoField = new JTextField(10);
++        JTextField idAsignacionField = new JTextField(10);
++
++        JPanel myPanel = new JPanel();
++        myPanel.setLayout(new GridLayout(2, 2));
++        myPanel.add(new JLabel("ID del Alumno:"));
++        myPanel.add(idAlumnoField);
++        myPanel.add(new JLabel("ID de la Asignación:"));
++        myPanel.add(idAsignacionField);
++
++        int result = JOptionPane.showConfirmDialog(null, myPanel,
++                "Por favor ingrese los datos de la Inscripción", JOptionPane.OK_CANCEL_OPTION);
++        if (result == JOptionPane.OK_OPTION) {
++            InsertarDatos insertar = new InsertarDatos();
++            insertar.insertarInscripcion(
++                    Integer.parseInt(idAlumnoField.getText()),
++                    Integer.parseInt(idAsignacionField.getText())
++            );
++        }
++    }
++}
+Index: Coneccion/FormularioAsignacion.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Coneccion/FormularioAsignacion.java b/Coneccion/FormularioAsignacion.java
+--- a/Coneccion/FormularioAsignacion.java	(revision 6207e7ad475709a7659ead92701aaab6ff7fe7aa)
++++ b/Coneccion/FormularioAsignacion.java	(date 1717089925370)
+@@ -1,0 +1,34 @@
++package Coneccion;
++import javax.swing.*;
++import java.awt.*;
++public class FormularioAsignacion {
++    public static void mostrarFormulario() {
++        JTextField idCursoField = new JTextField(10);
++        JTextField idCatedraticoField = new JTextField(10);
++        JTextField semestreField = new JTextField(10);
++        JTextField anoField = new JTextField(10);
++
++        JPanel myPanel = new JPanel();
++        myPanel.setLayout(new GridLayout(4, 2));
++        myPanel.add(new JLabel("ID del Curso:"));
++        myPanel.add(idCursoField);
++        myPanel.add(new JLabel("ID del Catedrático:"));
++        myPanel.add(idCatedraticoField);
++        myPanel.add(new JLabel("Semestre:"));
++        myPanel.add(semestreField);
++        myPanel.add(new JLabel("Año:"));
++        myPanel.add(anoField);
++
++        int result = JOptionPane.showConfirmDialog(null, myPanel,
++                "Por favor ingrese los datos de la Asignación", JOptionPane.OK_CANCEL_OPTION);
++        if (result == JOptionPane.OK_OPTION) {
++            InsertarDatos insertar = new InsertarDatos();
++            insertar.insertarAsignacionCursoCatedratico(
++                    Integer.parseInt(idCursoField.getText()),
++                    Integer.parseInt(idCatedraticoField.getText()),
++                    semestreField.getText(),
++                    Integer.parseInt(anoField.getText())
++            );
++        }
++    }
++}
+Index: Coneccion/FormularioAlumno.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Coneccion/FormularioAlumno.java b/Coneccion/FormularioAlumno.java
+--- a/Coneccion/FormularioAlumno.java	(revision 6207e7ad475709a7659ead92701aaab6ff7fe7aa)
++++ b/Coneccion/FormularioAlumno.java	(date 1717089734554)
+@@ -1,0 +1,43 @@
++package Coneccion;
++import javax.swing.*;
++import java.awt.*;
++public class FormularioAlumno {
++    public static void mostrarFormulario() {
++        JTextField nombreField = new JTextField(10);
++        JTextField apellidoField = new JTextField(10);
++        JTextField fechaNacimientoField = new JTextField(10);
++        JTextField direccionField = new JTextField(10);
++        JTextField telefonoField = new JTextField(10);
++        JTextField emailField = new JTextField(10);
++
++        JPanel myPanel = new JPanel();
++        myPanel.setLayout(new GridLayout(6, 2));
++        myPanel.add(new JLabel("Nombre:"));
++        myPanel.add(nombreField);
++        myPanel.add(new JLabel("Apellido:"));
++        myPanel.add(apellidoField);
++        myPanel.add(new JLabel("Fecha de Nacimiento:"));
++        myPanel.add(fechaNacimientoField);
++        myPanel.add(new JLabel("Dirección:"));
++        myPanel.add(direccionField);
++        myPanel.add(new JLabel("Teléfono:"));
++        myPanel.add(telefonoField);
++        myPanel.add(new JLabel("Email:"));
++        myPanel.add(emailField);
++
++        int result = JOptionPane.showConfirmDialog(null, myPanel,
++                "Por favor ingrese los datos del Alumno", JOptionPane.OK_CANCEL_OPTION);
++        if (result == JOptionPane.OK_OPTION) {
++            InsertarDatos insertar = new InsertarDatos();
++            insertar.insertarAlumno(
++                    nombreField.getText(),
++                    apellidoField.getText(),
++                    fechaNacimientoField.getText(),
++                    direccionField.getText(),
++                    telefonoField.getText(),
++                    emailField.getText()
++            );
++        }
++    }
++}
++
+Index: Coneccion/FormularioCalificacion.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Coneccion/FormularioCalificacion.java b/Coneccion/FormularioCalificacion.java
+--- a/Coneccion/FormularioCalificacion.java	(revision 6207e7ad475709a7659ead92701aaab6ff7fe7aa)
++++ b/Coneccion/FormularioCalificacion.java	(date 1717090641973)
+@@ -1,0 +1,32 @@
++package Coneccion;
++import javax.swing.*;
++import java.awt.*;
++
++public class FormularioCalificacion {
++
++    public static void mostrarFormulario() {
++        JTextField idInscripcionField = new JTextField(10);
++        JTextField calificacionField = new JTextField(10);
++        JTextField fechaCalificacionField = new JTextField(10);
++
++        JPanel myPanel = new JPanel();
++        myPanel.setLayout(new GridLayout(3, 2));
++        myPanel.add(new JLabel("ID de la Inscripción:"));
++        myPanel.add(idInscripcionField);
++        myPanel.add(new JLabel("Calificación:"));
++        myPanel.add(calificacionField);
++        myPanel.add(new JLabel("Fecha de Calificación:"));
++        myPanel.add(fechaCalificacionField);
++
++        int result = JOptionPane.showConfirmDialog(null, myPanel,
++                "Por favor ingrese los datos de la Calificación", JOptionPane.OK_CANCEL_OPTION);
++        if (result == JOptionPane.OK_OPTION) {
++            InsertarDatos insertar = new InsertarDatos();
++            insertar.insertarCalificacion(
++                    Integer.parseInt(idInscripcionField.getText()),
++                    Double.parseDouble(calificacionField.getText()),
++                    fechaCalificacionField.getText()
++            );
++        }
++    }
++}
+Index: Coneccion/Coneccion.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Coneccion/Coneccion.java b/Coneccion/Coneccion.java
+--- a/Coneccion/Coneccion.java	(revision 6207e7ad475709a7659ead92701aaab6ff7fe7aa)
++++ b/Coneccion/Coneccion.java	(date 1717084537810)
+@@ -1,0 +1,23 @@
++package Coneccion;
++
++import java.sql.Connection;
++import java.sql.DriverManager;
++import java.sql.SQLException;
++
++public class Coneccion {
++    private static final String URL = "jdbc:mysql://localhost/Universidad";
++    private static final String USER = "root";
++    private static final String PASSWORD = "123456";
++
++    public Connection conector() {
++        Connection conn = null;
++        try {
++            conn = DriverManager.getConnection(URL, USER, PASSWORD);
++        } catch (SQLException ex) {
++            ex.printStackTrace();
++
++        }
++        return conn;
++    }
++}
++
+Index: Coneccion/FormularioCatedratico.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Coneccion/FormularioCatedratico.java b/Coneccion/FormularioCatedratico.java
+--- a/Coneccion/FormularioCatedratico.java	(revision 6207e7ad475709a7659ead92701aaab6ff7fe7aa)
++++ b/Coneccion/FormularioCatedratico.java	(date 1717089870172)
+@@ -1,0 +1,42 @@
++package Coneccion;
++import javax.swing.*;
++import java.awt.*;
++public class FormularioCatedratico {
++    public static void mostrarFormulario() {
++        JTextField nombreField = new JTextField(10);
++        JTextField apellidoField = new JTextField(10);
++        JTextField especialidadField = new JTextField(10);
++        JTextField emailField = new JTextField(10);
++        JTextField telefonoField = new JTextField(10);
++        JTextField fechaContratacionField = new JTextField(10);
++
++        JPanel myPanel = new JPanel();
++        myPanel.setLayout(new GridLayout(6, 2));
++        myPanel.add(new JLabel("Nombre:"));
++        myPanel.add(nombreField);
++        myPanel.add(new JLabel("Apellido:"));
++        myPanel.add(apellidoField);
++        myPanel.add(new JLabel("Especialidad:"));
++        myPanel.add(especialidadField);
++        myPanel.add(new JLabel("Email:"));
++        myPanel.add(emailField);
++        myPanel.add(new JLabel("Teléfono:"));
++        myPanel.add(telefonoField);
++        myPanel.add(new JLabel("Fecha de Contratación:"));
++        myPanel.add(fechaContratacionField);
++
++        int result = JOptionPane.showConfirmDialog(null, myPanel,
++                "Por favor ingrese los datos del Catedrático", JOptionPane.OK_CANCEL_OPTION);
++        if (result == JOptionPane.OK_OPTION) {
++            InsertarDatos insertar = new InsertarDatos();
++            insertar.insertarCatedratico(
++                    nombreField.getText(),
++                    apellidoField.getText(),
++                    especialidadField.getText(),
++                    emailField.getText(),
++                    telefonoField.getText(),
++                    fechaContratacionField.getText()
++            );
++        }
++    }
++}
+Index: Coneccion/FormularioCurso.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Coneccion/FormularioCurso.java b/Coneccion/FormularioCurso.java
+--- a/Coneccion/FormularioCurso.java	(revision 6207e7ad475709a7659ead92701aaab6ff7fe7aa)
++++ b/Coneccion/FormularioCurso.java	(date 1717089814483)
+@@ -1,0 +1,32 @@
++package Coneccion;
++import javax.swing.*;
++import java.awt.*;
++
++public class FormularioCurso {
++    public static void mostrarFormulario() {
++        JTextField nombreCursoField = new JTextField(10);
++        JTextField descripcionField = new JTextField(10);
++        JTextField creditosField = new JTextField(10);
++
++        JPanel myPanel = new JPanel();
++        myPanel.setLayout(new GridLayout(3, 2));
++        myPanel.add(new JLabel("Nombre del Curso:"));
++        myPanel.add(nombreCursoField);
++        myPanel.add(new JLabel("Descripción:"));
++        myPanel.add(descripcionField);
++        myPanel.add(new JLabel("Créditos:"));
++        myPanel.add(creditosField);
++
++        int result = JOptionPane.showConfirmDialog(null, myPanel,
++                "Por favor ingrese los datos del Curso", JOptionPane.OK_CANCEL_OPTION);
++        if (result == JOptionPane.OK_OPTION) {
++            InsertarDatos insertar = new InsertarDatos();
++            insertar.insertarCurso(
++                    nombreCursoField.getText(),
++                    descripcionField.getText(),
++                    Integer.parseInt(creditosField.getText())
++            );
++        }
++    }
++}
++
+Index: Coneccion/InsertarDatos.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Coneccion/InsertarDatos.java b/Coneccion/InsertarDatos.java
+--- a/Coneccion/InsertarDatos.java	(revision 6207e7ad475709a7659ead92701aaab6ff7fe7aa)
++++ b/Coneccion/InsertarDatos.java	(date 1717098079906)
+@@ -1,0 +1,75 @@
++package Coneccion;
++
++import javax.swing.*;
++import java.sql.Connection;
++import java.sql.PreparedStatement;
++import java.sql.SQLException;
++
++public class InsertarDatos {
++    private Coneccion conexion;
++
++    public InsertarDatos() {
++        conexion = new Coneccion();
++    }
++
++    public void insertarAlumno(String nombre, String apellido, String fechaNacimiento, String direccion, String telefono, String email) {
++        insertarDatos("alumno", "nombre, apellido, fecha_nacimiento, direccion, telefono, email", "?, ?, ?, ?, ?, ?", nombre, apellido, fechaNacimiento, direccion, telefono, email);
++    }
++
++    public void insertarCurso(String nombreCurso, String descripcion, int creditos) {
++        insertarDatos("cursos", "nombre_curso, descripcion, creditos", "?, ?, ?", nombreCurso, descripcion, creditos);
++    }
++
++    public void insertarCatedratico(String nombre, String apellido, String especialidad, String email, String telefono, String fechaContratacion) {
++        insertarDatos("catedraticos", "nombre, apellido, especialidad, email, telefono, fecha_contratacion", "?, ?, ?, ?, ?, ?", nombre, apellido, especialidad, email, telefono, fechaContratacion);
++    }
++
++    public void insertarAsignacionCursoCatedratico(int idCurso, int idCatedratico, String semestre, int ano) {
++        insertarDatos("asignacion_cursos_catedraticos", "id_curso, id_catedratico, semestre, ano", "?, ?, ?, ?", idCurso, idCatedratico, semestre, ano);
++    }
++
++    public void insertarInscripcion(int idAlumno, int idAsignacion) {
++        insertarDatos("inscripciones", "id_alumno, id_asignacion", "?, ?", idAlumno, idAsignacion);
++    }
++
++    public void insertarCalificacion(int idInscripcion, double calificacion, String fechaCalificacion) {
++        insertarDatos("calificaciones", "id_inscripcion, calificacion, fecha_calificacion", "?, ?, ?", idInscripcion, calificacion, fechaCalificacion);
++    }
++
++    private void insertarDatos(String tabla, String columnas, String placeholders, Object... valores) {
++        Connection conn = null;
++        PreparedStatement statement = null;
++        try {
++            conn = conexion.conector();
++            if (conn != null) {
++                String sql = "INSERT INTO " + tabla + " (" + columnas + ") VALUES (" + placeholders + ")";
++                statement = conn.prepareStatement(sql);
++
++                for (int i = 0; i < valores.length; i++) {
++                    statement.setObject(i + 1, valores[i]);
++                }
++
++                int filasInsertadas = statement.executeUpdate();
++                if (filasInsertadas > 0) {
++                    JOptionPane.showMessageDialog(null, "Datos insertados exitosamente en " + tabla + "!");
++                }
++            } else {
++                JOptionPane.showMessageDialog(null, "Error en la conexión a la base de datos.");
++            }
++        } catch (SQLException ex) {
++            ex.printStackTrace();
++            JOptionPane.showMessageDialog(null, "Error al insertar los datos en " + tabla + ": " + ex.getMessage());
++        } finally {
++            try {
++                if (statement != null) {
++                    statement.close();
++                }
++                if (conn != null) {
++                    conn.close();
++                }
++            } catch (SQLException ex) {
++                ex.printStackTrace();
++            }
++        }
++    }
++}
